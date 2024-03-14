@@ -68,3 +68,116 @@ graph TD;
     O -->|Vidas > 0| B
     O -->|Vidas <= 0| J(Mostrar Pantalla de Game Over)
 ```
+# class diagram
+
+```mermaid
+classDiagram
+    class Jugador {
+        -posx: int
+        -posy: int
+        -ancho: int
+        -alto: int
+        -vel: int
+        -color: tuple
+        -screen: pygame.Surface
+        -SIZE: tuple
+        -jugadorRect: pygame.Rect
+        +__init__(posx, posy, ancho, alto, vel, color, screen, SIZE)
+        +mostrar()
+        +update(xFac)
+        +getRect()
+    }
+
+    class Bola {
+        -posx: int
+        -posy: int
+        -rad: int
+        -vel: int
+        -color: tuple
+        -screen: pygame.Surface
+        -SIZE: tuple
+        -xFac: int
+        -yFac: int
+        -bola: pygame.Rect
+        +__init__(posx, posy, rad, vel, color, screen, SIZE)
+        +mostrar()
+        +update()
+        +reset()
+        +golpe()
+        +getRect()
+    }
+
+    class Ladrillo {
+        -posx: int
+        -posy: int
+        -ancho: int
+        -alto: int
+        -color: tuple
+        -screen: pygame.Surface
+        -vida: int
+        -damage: int
+        -ladrilloRect: pygame.Rect
+        +__init__(posx, posy, ancho, alto, color, screen)
+        +mostrar()
+        +choque()
+        +getRect()
+        +getVida()
+        +getColor()
+    }
+
+    Jugador <-- Bola
+    Jugador <-- Ladrillo
+    Bola <-- Ladrillo
+
+```
+
+# Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    PARTICIPANTE ||--o{ JUGADOR : juega
+    PARTICIPANTE ||--o{ LADRILLO : crea
+    PARTICIPANTE ||--o{ BOLA : golpea
+    JUGADOR {
+        PK int jugador_id
+        int posx
+        int posy
+        int ancho
+        int alto
+        int vel
+        tuple color
+        pygame.Surface screen
+        tuple SIZE
+        pygame.Rect jugadorRect
+    }
+    BOLA {
+        PK int bola_id
+        int posx
+        int posy
+        int rad
+        int vel
+        tuple color
+        pygame.Surface screen
+        tuple SIZE
+        int xFac
+        int yFac
+        pygame.Rect bola
+        FK int jugador_id
+    }
+    LADRILLO {
+        PK int ladrillo_id
+        int posx
+        int posy
+        int ancho
+        int alto
+        tuple color
+        pygame.Surface screen
+        int vida
+        int damage
+        pygame.Rect ladrilloRect
+        FK int bola_id
+    }
+    JUGADOR ||--o{ BOLA : controla
+    BOLA ||--o{ LADRILLO : afecta
+
+```
