@@ -79,55 +79,82 @@ classDiagram
         -alto: int
         -vel: int
         -color: tuple
-        -screen: pygame.Surface
+        -screen: Surface
         -SIZE: tuple
-        -jugadorRect: pygame.Rect
+        -jugadorRect: Rect
         +__init__(posx, posy, ancho, alto, vel, color, screen, SIZE)
-        +mostrar()
-        +update(xFac)
-        +getRect()
+        +mostrar(): void
+        +update(xFac: int): void
+        +getRect(): Rect
     }
-
     class Bola {
         -posx: int
         -posy: int
         -rad: int
         -vel: int
         -color: tuple
-        -screen: pygame.Surface
+        -screen: Surface
         -SIZE: tuple
         -xFac: int
         -yFac: int
-        -bola: pygame.Rect
+        -bola: Circle
         +__init__(posx, posy, rad, vel, color, screen, SIZE)
-        +mostrar()
-        +update()
-        +reset()
-        +golpe()
-        +getRect()
+        +mostrar(): void
+        +update(): bool
+        +reset(): void
+        +golpe(): void
+        +getRect(): Circle
     }
-
     class Ladrillo {
         -posx: int
         -posy: int
         -ancho: int
         -alto: int
         -color: tuple
-        -screen: pygame.Surface
-        -vida: int
         -damage: int
-        -ladrilloRect: pygame.Rect
+        -screen: Surface
+        -vida: int
+        -ladrilloRect: Rect
+        -ladrillo: Rect
         +__init__(posx, posy, ancho, alto, color, screen)
-        +mostrar()
-        +choque()
-        +getRect()
-        +getVida()
-        +getColor()
+        +mostrar(): void
+        +choque(): void
+        +getRect(): Rect
+        +getVida(): int
+        +getColor(): tuple
+    }
+    class Main {
+        -vidas: int
+        -puntuacion: int
+        -nivel: int
+        -SIZE: tuple
+        -bgImg: Surface
+        -NEGRO: tuple
+        -BLANCO: tuple
+        -VERDE: tuple
+        -ROJO: tuple
+        -fuenteTexto: Font
+        -listaRandColor: list
+        -screen: Surface
+        -clock: Clock
+        -FPS: int
+        +sonidoGolpe: Sound
+        +sonidoBreak: Sound
+        +sonidoWin: Sound
+        +sonidoLose: Sound
+        +__init__(): void
+        +velocidadNivel(nivel: int): int
+        +main(): void
+        +gameOver(): bool
+        +verChoque(ladrillo: Rect, bola: Circle): bool
+        +colocarLadrillos(ancho, alto, separacionH, separacionV, nivel): list
     }
 
-    Jugador <-- Bola
-    Jugador <-- Ladrillo
-    Bola <-- Ladrillo
+    Jugador -- Bola : contiene
+    Jugador -- Main : contiene
+    Bola -- Main : contiene
+    Ladrillo -- Main : contiene
+
 
 ```
 
@@ -139,43 +166,37 @@ erDiagram
     PARTICIPANTE ||--o{ LADRILLO : crea
     PARTICIPANTE ||--o{ BOLA : golpea
     JUGADOR {
-        PK int jugador_id
+        int jugador_id PK
         int posx
         int posy
         int ancho
         int alto
         int vel
         tuple color
-        pygame.Surface screen
         tuple SIZE
-        pygame.Rect jugadorRect
     }
     BOLA {
-        PK int bola_id
+        int bola_id PK
         int posx
         int posy
         int rad
         int vel
         tuple color
-        pygame.Surface screen
         tuple SIZE
         int xFac
         int yFac
-        pygame.Rect bola
-        FK int jugador_id
+        int jugador_id FK
     }
     LADRILLO {
-        PK int ladrillo_id
+        int ladrillo_id PK
         int posx
         int posy
         int ancho
         int alto
         tuple color
-        pygame.Surface screen
         int vida
         int damage
-        pygame.Rect ladrilloRect
-        FK int bola_id
+        int bola_id FK
     }
     JUGADOR ||--o{ BOLA : controla
     BOLA ||--o{ LADRILLO : afecta
