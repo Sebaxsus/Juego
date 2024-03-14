@@ -237,9 +237,6 @@ sequenceDiagram
 
 ```
 # Variable Dictionary
-
-```markdown
-Variable Dictionary
 -------------------
 
 ### Bola Class
@@ -291,4 +288,3 @@ Variable Dictionary
 - `screen`: Pygame Surface object representing the game screen.
 - `clock`: Pygame Clock object representing the game clock.
 - `FPS`: Integer representing the frames per second of the game.
-```
