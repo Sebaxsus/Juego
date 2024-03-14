@@ -79,9 +79,7 @@ classDiagram
         -alto: int
         -vel: int
         -color: tuple
-        -screen: Surface
         -SIZE: tuple
-        -jugadorRect: Rect
         +__init__(posx, posy, ancho, alto, vel, color, screen, SIZE)
         +mostrar(): void
         +update(xFac: int): void
@@ -112,10 +110,7 @@ classDiagram
         -alto: int
         -color: tuple
         -damage: int
-        -screen: Surface
         -vida: int
-        -ladrilloRect: Rect
-        -ladrillo: Rect
         +__init__(posx, posy, ancho, alto, color, screen)
         +mostrar(): void
         +choque(): void
@@ -128,14 +123,12 @@ classDiagram
         -puntuacion: int
         -nivel: int
         -SIZE: tuple
-        -bgImg: Surface
         -NEGRO: tuple
         -BLANCO: tuple
         -VERDE: tuple
         -ROJO: tuple
         -fuenteTexto: Font
         -listaRandColor: list
-        -screen: Surface
         -clock: Clock
         -FPS: int
         +sonidoGolpe: Sound
@@ -200,5 +193,46 @@ erDiagram
     }
     JUGADOR ||--o{ BOLA : controla
     BOLA ||--o{ LADRILLO : afecta
+
+```
+
+# Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant Jugador
+    participant Bola
+    participant Ladrillo
+    participant Main
+
+    Main->>Jugador: __init__()
+    Main->>Bola: __init__()
+    Main->>Ladrillo: __init__()
+    Main->>Main: main()
+
+    loop Actualización del juego
+        Main->>Jugador: mostrar()
+        Main->>Bola: mostrar()
+        Main->>Ladrillo: mostrar()
+        Jugador->>Jugador: update()
+        Bola->>Bola: update()
+        Main->>Main: verChoque()
+        alt Colisión con Jugador
+            Main->>Jugador: golpe()
+        else Colisión con Ladrillo
+            Main->>Ladrillo: choque()
+            alt Vida del Ladrillo <= 0
+                Main->>Main: eliminarLadrillo()
+            end
+            Main->>Main: actualizarPuntuacion()
+        end
+        alt Fin del Nivel
+            Main->>Main: generarNuevosLadrillos()
+        end
+        alt Fin de Pantalla
+            Main->>Bola: reset()
+            Main->>Main: perderVida()
+        end
+    end
 
 ```
