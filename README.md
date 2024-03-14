@@ -152,7 +152,7 @@ classDiagram
 ```
 
 # Entity Relationship Diagram
-
+![ImagenEERMySqlWorkbench](./Multimedia/Captura%20de%20pantalla%202024-03-13%20201928.png)
 ```mermaid
 erDiagram
     PARTICIPANTE ||--o{ JUGADOR : juega
