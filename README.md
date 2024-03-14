@@ -1,45 +1,45 @@
 ---
 
-# Documentación del Juego "Pin Pon?"
+# "Pin Pon?" Game Documentation
 
-## Introducción
-"Pin Pon?" es un juego arcade clásico desarrollado en Python utilizando la biblioteca Pygame. El objetivo del juego es romper los ladrillos ubicados en la parte superior de la pantalla con una bola controlada por el jugador. El juego incluye múltiples niveles de dificultad, puntuación, vidas y efectos de sonido.
+## Introduction
+"Pin Pon?" is a classic arcade game developed in Python using the Pygame library. The objective of the game is to break the bricks located at the top of the screen with a ball controlled by the player. The game includes multiple levels of difficulty, scoring, lives, and sound effects.
 
-## Estructura del Proyecto
-El proyecto está organizado en cuatro archivos principales ubicados en el directorio "Clases":
-- **Bola.py**: Contiene la clase que define el comportamiento de la bola en el juego.
-- **Jugador.py**: Define la clase que representa al jugador y su interacción con la bola.
-- **Ladrillo.py**: Contiene la clase que representa los ladrillos que deben ser destruidos para avanzar en el juego.
-- **Main.py**: Implementa la lógica principal del juego y gestiona la interfaz gráfica.
+## Project Structure
+The project is organized into four main files located in the "Classes" directory:
+- **Bola.py**: Contains the class that defines the behavior of the ball in the game.
+- **Jugador.py**: Defines the class representing the player and its interaction with the ball.
+- **Ladrillo.py**: Contains the class representing the bricks that need to be destroyed to advance in the game.
+- **Main.py**: Implements the main logic of the game and manages the graphical interface.
 
-## Clase Bola
-La clase Bola define el comportamiento de la bola en el juego. Algunas características importantes incluyen:
-- Movimiento de rebote dentro del área de juego.
-- Detección de colisiones con los bordes y los objetos del juego.
-- Métodos para actualizar la posición de la bola y mostrarla en pantalla.
+## Bola Class
+The Bola class defines the behavior of the ball in the game. Some key features include:
+- Bouncing movement within the game area.
+- Collision detection with the edges and objects of the game.
+- Methods to update the position of the ball and display it on the screen.
 
-## Clase Jugador
-La clase Jugador representa al jugador y su interacción con la bola. Sus funcionalidades clave son:
-- Movimiento horizontal controlado por el usuario.
-- Detección de colisiones con la bola y los bordes del área de juego.
-- Métodos para actualizar la posición del jugador y mostrarlo en pantalla.
+## Jugador Class
+The Jugador class represents the player and its interaction with the ball. Its key functionalities are:
+- Horizontal movement controlled by the user.
+- Collision detection with the ball and the edges of the game area.
+- Methods to update the player's position and display it on the screen.
 
-## Clase Ladrillo
-La clase Ladrillo modela los ladrillos que deben ser destruidos en el juego. Sus características incluyen:
-- Vida y color variados que afectan la puntuación del jugador.
-- Detección de colisiones con la bola y métodos para reducir su vida.
-- Representación visual en la pantalla.
+## Ladrillo Class
+The Ladrillo class models the bricks that need to be destroyed in the game. Its features include:
+- Varied life and color affecting the player's score.
+- Collision detection with the ball and methods to reduce its life.
+- Visual representation on the screen.
 
-## Lógica del Juego
-El archivo Main.py implementa la lógica principal del juego. Algunas de sus características son:
-- Inicialización de Pygame y configuración de la pantalla.
-- Gestión de eventos de teclado y detección de colisiones.
-- Actualización de la posición de los objetos y renderizado en pantalla.
-- Manejo de puntuación, vidas, niveles y efectos de sonido.
-- Funciones adicionales como la colocación de ladrillos y la detección de fin de juego.
+## Game Logic
+The Main.py file implements the main logic of the game. Some of its features include:
+- Pygame initialization and screen setup.
+- Keyboard event handling and collision detection.
+- Update of object positions and rendering on the screen.
+- Management of score, lives, levels, and sound effects.
+- Additional functions such as brick placement and end-game detection.
 
-## Conclusiones
-El juego "Pin Pon?" ofrece una experiencia entretenida y desafiante para los jugadores de todas las edades. Su código bien estructurado y modular facilita la comprensión y la ampliación del juego con nuevas características. La documentación proporcionada aquí sirve como una guía útil para entender el funcionamiento interno del juego y su implementación en Python con Pygame.
+## Conclusion
+The "Pin Pon?" game offers an entertaining and challenging experience for players of all ages. Its well-structured and modular code facilitates understanding and expansion of the game with new features. The documentation provided here serves as a useful guide to understand the internal workings of the game and its implementation in Python with Pygame.
 
 ---
 
@@ -235,4 +235,60 @@ sequenceDiagram
         end
     end
 
+```
+# Variable Dictionary
+
+```markdown
+Variable Dictionary
+-------------------
+
+### Bola Class
+- `posx`: Integer representing the x-coordinate position of the ball.
+- `posy`: Integer representing the y-coordinate position of the ball.
+- `rad`: Integer representing the radius of the ball.
+- `vel`: Integer representing the velocity of the ball.
+- `color`: Tuple representing the color of the ball.
+- `screen`: Pygame Surface object representing the game screen.
+- `SIZE`: Tuple representing the size of the game screen.
+- `xFac`: Integer representing the x-direction factor of the ball's movement.
+- `yFac`: Integer representing the y-direction factor of the ball's movement.
+- `bola`: Pygame Circle object representing the ball.
+
+### Jugador Class
+- `posx`: Integer representing the x-coordinate position of the player.
+- `posy`: Integer representing the y-coordinate position of the player.
+- `ancho`: Integer representing the width of the player.
+- `alto`: Integer representing the height of the player.
+- `vel`: Integer representing the velocity of the player.
+- `color`: Tuple representing the color of the player.
+- `screen`: Pygame Surface object representing the game screen.
+- `SIZE`: Tuple representing the size of the game screen.
+- `jugadorRect`: Pygame Rect object representing the player's rectangle.
+
+### Ladrillo Class
+- `posx`: Integer representing the x-coordinate position of the brick.
+- `posy`: Integer representing the y-coordinate position of the brick.
+- `ancho`: Integer representing the width of the brick.
+- `alto`: Integer representing the height of the brick.
+- `color`: Tuple representing the color of the brick.
+- `damage`: Integer representing the damage inflicted by the brick.
+- `screen`: Pygame Surface object representing the game screen.
+- `vida`: Integer representing the health of the brick.
+- `ladrilloRect`: Pygame Rect object representing the brick's rectangle.
+
+### Main
+- `vidas`: Integer representing the number of lives remaining.
+- `puntuacion`: Integer representing the player's score.
+- `nivel`: Integer representing the current level of the game.
+- `SIZE`: Tuple representing the size of the game screen.
+- `bgImg`: Pygame Surface object representing the background image.
+- `NEGRO`: Tuple representing the color black.
+- `BLANCO`: Tuple representing the color white.
+- `VERDE`: Tuple representing the color green.
+- `ROJO`: Tuple representing the color red.
+- `fuenteTexto`: Pygame Font object representing the text font.
+- `listaRandColor`: List containing randomly selected colors for bricks.
+- `screen`: Pygame Surface object representing the game screen.
+- `clock`: Pygame Clock object representing the game clock.
+- `FPS`: Integer representing the frames per second of the game.
 ```
