@@ -46,27 +46,28 @@ The "Pin Pon?" game offers an entertaining and challenging experience for player
 # flowchart
 ```mermaid
 graph TD;
-    A(Iniciar Juego) --> B(¿Hay colisiones?)
-    B -->|Sí| C(¿Choque con Jugador?)
-    C -->|Sí| D(Rebotar Bola)
-    C -->|No| E(¿Choque con Ladrillo?)
-    E -->|Sí| F(Reducir Vida del Ladrillo)
-    F -->|Vida <= 0| G(Eliminar Ladrillo)
-    G -->|Fin de Nivel| H(Generar nuevos Ladrillos)
+    A(Start Game) --> B(Are there collisions?)
+    B -->|Yes| C(Collision with Player?)
+    C -->|Yes| D(Bounce Ball)
+    C -->|No| E(Collision with Brick?)
+    E -->|Yes| F(Reduce Brick's Life)
+    F -->|Life <= 0| G(Remove Brick)
+    G -->|End of Level| H(Generate new Bricks)
     G -->|No| B
     E -->|No| B
-    D -->|Fin de Pantalla| I(Perder Vida)
-    I -->|Vidas > 0| B
-    I -->|Vidas <= 0| J(Mostrar Pantalla de Game Over)
-    J --> K(¿Reiniciar Juego?)
-    K -->|Sí| A
-    K -->|No| L(Terminar Juego)
-    H -->|Nuevos Ladrillos| B
-    B --> M(Actualizar Puntuación)
-    M --> N(¿Bola ha tocado Fondo?)
-    N -->|Sí| O(Perder Vida)
-    O -->|Vidas > 0| B
-    O -->|Vidas <= 0| J(Mostrar Pantalla de Game Over)
+    D -->|End of Screen| I(Lose Life)
+    I -->|Lives > 0| B
+    I -->|Lives <= 0| J(Display Game Over Screen)
+    J --> K(Reset Game?)
+    K -->|Yes| A
+    K -->|No| L(End Game)
+    H -->|New Bricks| B
+    B --> M(Update Score)
+    M --> N(Has Ball touched Bottom?)
+    N -->|Yes| O(Lose Life)
+    O -->|Lives > 0| B
+    O -->|Lives <= 0| J(Display Game Over Screen)
+
 ```
 # class diagram
 
@@ -288,3 +289,29 @@ sequenceDiagram
 - `screen`: Pygame Surface object representing the game screen.
 - `clock`: Pygame Clock object representing the game clock.
 - `FPS`: Integer representing the frames per second of the game.
+
+---
+
+**How the Game Works**
+
+1. **Objective of the Game**: The objective of the game "Pin Pon?" is to destroy all the bricks at the top of the screen using a bouncing ball and a paddle that you move from left to right.
+
+2. **Game Elements**:
+   - **Ball**: It's a small circle that bounces around the screen. Your goal is to hit it with the paddle so that it hits the bricks.
+   - **Paddle**: It's a horizontal bar that you can move from left to right using the arrow keys. You must control it to hit the ball and prevent it from falling off the screen.
+   - **Bricks**: These are colored blocks arranged at the top of the screen. You must hit them with the ball to destroy them and progress in the game.
+
+3. **How to Play**:
+   - Start the game and control the paddle using the left and right arrow keys.
+   - Hit the ball with the paddle so that it bounces and hits the bricks.
+   - Try to destroy all the bricks before the ball falls off the screen.
+   - If the ball falls off the screen, you'll lose a life. If you lose all your lives, the game ends.
+   - Each time you destroy a brick, you'll earn points. Advance through the levels and try to achieve the highest score possible.
+
+4. **Levels and Difficulty**:
+   - The game may have multiple levels with different arrangements of bricks and ball speeds.
+   - As you advance to higher levels, the speed of the ball may increase, making it more challenging to hit with the paddle.
+
+5. **End of the Game**:
+   - The game ends when you lose all your lives and can no longer continue.
+   - You can retry from the first level if you wish.
