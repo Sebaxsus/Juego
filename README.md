@@ -345,6 +345,15 @@ sequenceDiagram
     - `Cohesion`: Alta
     - `Acoplamiento`: Alta
 
+5. **Total**:
+    - `Lineas de Codigo (LOC)`: 230
+    - `Profundidad de Clase`: 2
+    - `Nodos`: 4
+    - `Frecuencia de Herencia` : 2
+
+**Frecuencia de Herencia**:
+ - ${\sum{Nodos}\over\sum{Profundida-de-Clase}}=Frecuencia-de-Herencia$
+
 **Tamaño del Software - LOC**
 
 - ***Es la cantidad de Lineas de Codigo dentro del porjecto***
@@ -368,4 +377,4 @@ sequenceDiagram
     - ${Nr} \over {Nc}$
     - En Donde Nr = Numero de Errores y Nc = Numero de Lineas de Codigo 
     - $\sum_{Nr} \over \sum_{Nc}$ 
-    - ${2} \over {230} $ $ = {0,008}$
+    - ${{2}\over{230}}={0,008}$
