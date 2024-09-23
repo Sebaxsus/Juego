@@ -315,3 +315,57 @@ sequenceDiagram
 5. **End of the Game**:
    - The game ends when you lose all your lives and can no longer continue.
    - You can retry from the first level if you wish.
+
+---
+
+# Metricas de Software
+
+1. **Clase Bola**:
+    - `Lineas de Codigo (LOC)`: 29
+    - `Numero de Metodos`: 6
+    - `Complejidad Ciclomatica`: 3
+    - `Cohesion`: Alta
+    - `Acoplamiento`: Medio?
+2. **Clase Jugador**:
+    - `Lineas de Codigo (LOC)`: 20
+    - `Numero de Metodos`: 4
+    - `Complejidad Ciclomatica`: 2
+    - `Cohesion`: Alta
+    - `Acoplamiento`: Medio?
+3. **Clase Ladrillo**:
+    - `Lineas de Codigo (LOC)`: 31
+    - `Numero de Metodos`: 6
+    - `Complejida Ciclomatica`: 4
+    - `Cohesion`: Alta
+    - `Acoplamiento`: Medio?
+4. **Clase Main**:
+    - `Lineas de Codigo (LOC)`: 150
+    - `Numero de Metodos`: 5
+    - `Complejidad Ciclomatica`: 42
+    - `Cohesion`: Alta
+    - `Acoplamiento`: Alta
+
+**Tamaño del Software - LOC**
+
+- ***Es la cantidad de Lineas de Codigo dentro del porjecto***
+
+**Complejidad Ciclomatica**:
+
+- ***Es la Cantidad de codigo que evalua cosas, Es decir es la cantidad de puntos de decicion Ej: `if` `else` `while` `for`***
+
+**Acoplamiento**:
+
+- ***Hace Referencia a que tanto depende un Modulo o Clase de otros Modulos o Clases***
+
+**Cohesion**:
+
+- ***Hace Referencia a que tanto se relacionan entre si los Modulos o Clases, Es Decir que tanto Hereda una clase de Otra***
+
+**Ecuaciones**
+
+1. **Densidad de Defectos**:
+    - Relacion entre la cantidad de errores y El Total de Lineas de Codigo. 
+    - ${Nr} \over {Nc}$
+    - En Donde Nr = Numero de Errores y Nc = Numero de Lineas de Codigo 
+    - $\sum_{Nr} \over \sum_{Nc}$ 
+    - ${2} \over {230} $ $ = {0,008}$

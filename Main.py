@@ -115,7 +115,7 @@ def main():
     jugador = Jugador(0, SIZE[1]-50, 100, 20, velJ, BLANCO, screen, SIZE)
     jugadorXFac = 0
 
-    bola = Bola(0, SIZE[1]-150, 7, velocidadNivel(nivel), BLANCO, screen, SIZE)
+    bola = Bola(0, SIZE[1]-150, 7, velocidadNivel(nivel), ROJO, screen, SIZE)
 
     anchoLadrillo, altoLadrillo = 40, 15
     separacionH, separacionV = 20, 20
