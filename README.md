@@ -378,3 +378,24 @@ sequenceDiagram
     - En Donde Nr = Numero de Errores y Nc = Numero de Lineas de Codigo 
     - $\sum_{Nr} \over \sum_{Nc}$ 
     - ${{2}\over{230}}={0,008}$
+
+sequenceDiagram
+    autonumber
+    participant Cliente
+    participant Chatbot
+    participant ServicioGestiónSolicitudes
+    participant ServicioBDUsuarios
+    participant ServicioMonitoreo
+
+    Cliente->>Chatbot: Envía solicitud de información
+    Chatbot->>ServicioGestiónSolicitudes: Procesa solicitud
+    ServicioGestiónSolicitudes->>ServicioBDUsuarios: Almacena información del usuario
+    Chatbot-->>Cliente: Respuesta automática
+    ServicioGestiónSolicitudes->>ServicioMonitoreo: Registra tiempo de respuesta
+    ServicioMonitoreo-->>ServicioBDUsuarios: Actualiza estadísticas de interacción
+graph TD
+    A[Cliente] --> B[Microservicio de Chatbot]
+    B --> C[Microservicio de Gestión de Solicitudes]
+    C --> D[Base de Datos de Usuarios]
+    C --> E[Microservicio de Monitoreo]
+    D --> E
